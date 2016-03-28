@@ -1,0 +1,83 @@
+
+<ion-view title="Add Nutrition"   >
+    <ion-content overflow-scroll="true" padding="true" class="has-header">
+        <form class="list"
+              name="addNutritonForm"
+              ng-submit="addNewDailyNutrition(addNutritonForm)"
+              class="create-form">
+            <section>
+                <div class="form-errors"
+                     ng-messages="addNutritonForm.recipeName.$error"
+                     ng-show="addNutritonForm.myName.$touched || addNutritonForm.$submitted"
+                     ng-messages-include="templates/form-errors.html"></div>
+                <label class="item item-input">
+                    <span class="input-label">Meal Name</span>
+                    <input type="text" placeholder="Meal Name" ng-model="formData.mealName">
+                </label>
+                <label class="item item-input">
+                    <span class="input-label">Meal Type</span>
+                    <select ng-model="formData.meal">
+                        <option value="Breakfast" selected>Breakfast</option>
+                        <option value="Lunch">Lunch</option>
+                        <option value="Dinner">Dinner</option>
+                        <option value="Other">Other</option>
+                    </select>
+                </label>
+                <label class="item item-input">
+                    <div class="input-label">
+                        Date :
+                    </div>
+                    <input type="date"
+                           ng-model="formData.date"
+                           ng-bind="formData.date | date:'mm/dd/yyyy'"
+                           placeholder="mm/dd/yyyy">
+                </label>
+
+                <label class="item item-input">
+                    <div class="input-label">
+                        Time :
+                    </div>
+                    <input type="time"
+                           ng-model="formData.time"
+                           ng-bind="formData.date | date:'hh:mm'"
+                           placeholder="hh:mm">
+                </label>
+                <ion-list>
+                    <img ng-src="data:image/jpeg;base64,{{picture}}" height={{height}} width={{width}} alt="" />
+                </ion-list>
+                <a class="button button-stable" ng-click="addPicture()">Add a Picture</a>
+                <ion-list class="item-icon-right" ng-controller="addNutritionCtrl" ng-init="mealInfo()">
+                    <ion-item ng-repeat="i in retVals">
+                        <p>Name: {{i.ingName}}</p>
+                        <p>Calories : {{i.calories}} &nbsp;&nbsp;    Protein : {{i.protein}}</p>
+                        <p>Sugars : {{i.sugars}}   &nbsp;&nbsp;  Sodium : {{i.sodium}}</p>
+                        <p>Fat Content:  {{i.fatContent}} &nbsp;&nbsp; Food Color:  {{i.foodColor}} </p>
+                        <p>Freshness:  {{i.freshness}}  &nbsp;&nbsp; Quantity:  {{i.quantity}}</p>
+                        <p>Comments:  {{i.comments}}</p>
+
+                        <ion-option-button class="button-positive" ng-click="setFill(i)"><i class="icon ion-edit"></i></ion-option-button>
+                        <ion-option-button class="button-assertive" ng-click="setRemove(i)"><i class="icon ion-ios-trash"></i></ion-option-button>
+                    </ion-item>
+                    <p></p>
+                    <p></p>
+                    <ion-item>
+                        <p>Totals for Meal</p>
+                        <p>Calories : {{totalVal.calories}} &nbsp;&nbsp;    Protein : {{totalVal.protein}}</p>
+                        <p>Sugars : {{totalVal.sugars}}   &nbsp;&nbsp;  Sodium : {{totalVal.sodium}}</p>
+                        <p>Fat Content : {{totalVal.fatContent}}</p>
+                    </ion-item>
+                </ion-list>
+                <h4></h4>
+                <label class="item item-input item-floating-label">
+                    <span class="input-label  item-text-wrap">Additional Comments</span>
+                    <input type="text"
+                           ng-model="formData.comments"
+                           name="comments"
+                           placeholder="Additional Comments">
+                </label>
+            </section>
+        </form>
+        <a href="#/page24" class="button button-stable button-block" ng-click="addIngredient(addNutritonForm)">Add Meal Items</a>
+        <button class="button button-balanced button-block" type="submit" ng-click="addNewDailyNutrition(addNutritonForm)">Submit</button>
+    </ion-content>
+</ion-view>

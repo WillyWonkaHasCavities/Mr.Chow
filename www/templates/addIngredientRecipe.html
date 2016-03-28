@@ -1,0 +1,91 @@
+﻿<ion-view title="Add Ingredient" style="text-align:center;color:white;">
+    <ion-content overflow-scroll="true" padding="true" class="has-header">
+        <div class="item" style="float: left;">
+                <button class="button button-positive" ng-click="scan()">
+                    <i class="icon ion-qr-scanner"></i>
+                    Scan a Barcode
+                </button>
+                <button ion-autocomplete type="text" class="ion-autocomplete button button-positive" autocomplete="off"
+                        ng-model="model"
+                        item-value-key="item_name"
+                        item-view-value-key="item_name"
+                        items-method="getTestItems(query)"
+                        items-method-value-key="items"
+                        placeholder="Enter test query ..."
+                        items-clicked-method="itemsClicked(callback)"
+                        items-removed-method="itemsRemoved(callback)"
+                        max-selected-items="1"
+                        ng-model-options="{debounce:300}">
+                    <i class="icon ion-ios-search"></i>
+                    Search Myself
+                </button>
+                <b></b>
+                <p></p>
+            </div>
+        <label class="item item-input">
+            <span class="input-label">Food Name</span>
+            <input type="text"
+                   ng-model="initialize.ingName"
+                   placeholder="Food Name">
+        </label>
+        <label class="item item-input">
+            <span class="input-label">Total Fat</span>
+            <input type="number"
+                   ng-model="initialize.fatContent"
+                   placeholder="Fat Content">
+        </label>
+        <label class="item item-input">
+            <span class="input-label">Calories</span>
+            <input type="number"
+                   ng-model="initialize.calories"
+                   placeholder="Calories">
+        </label>
+        <label class="item item-input">
+            <span class="input-label">Protein</span>
+            <input type="number"
+                   ng-model="initialize.protein"
+                   placeholder="Protein">
+        </label>
+        <label class="item item-input">
+            <span class="input-label">Sugars</span>
+            <input type="number"
+                   ng-model="initialize.sugars"
+                   placeholder="Sugars">
+        </label>
+        <label class="item item-input">
+            <span class="input-label">Sodium</span>
+            <input type="number"
+                   ng-model="initialize.sodium"
+                   placeholder="Sodium">
+        </label>
+
+
+        <label class="item item-input">
+            <span class="input-label">Freshness of Food</span>
+            <select ng-model="initialize.freshness" >
+                <option value="fresh">Fresh</option>
+                <option value="frozen">Frozen</option>
+                <option value="canned">Canned</option>
+                <option value="dried">Dried</option>
+                <option value="other">Other</option>
+            </select>
+        </label>
+        <label class="item item-input">
+            <span class="input-label">Quantity</span>
+            <input type="text"
+                   ng-model="initialize.quantity"
+                   placeholder="Quanity of food?">
+        </label>
+        <label class="item item-input item-floating-label">
+            <span class="input-label  item-text-wrap">Additional Comments</span>
+            <input type="text"
+                   ng-model="initialize.comments"
+                   placeholder="Additional Comments">
+        </label>
+
+         <button class="button button-balanced button-block" ng-click="doStuff()">Submit</button>
+        
+</ion-content>
+
+
+</ion-view>

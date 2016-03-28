@@ -1,0 +1,78 @@
+<ion-view title="Add A Recipe">
+    <ion-content overflow-scroll="true" padding="true" class="has-header">
+        <form class="list"
+              name="form"
+              ng-submit=""
+              class="create-form">
+
+            <section>
+                <label class="item item-input">
+                    <span class="input-label">Recipe Title</span>
+                    <input type="text"
+                           ng-model="addRecipeForm.recipeName"
+                           ng-init="recipeName"
+                           placeholder="Recipe Title">
+                </label>
+                <label class="item item-input">
+                    <span class="input-label">Prep Time</span>
+                    <input type="text"
+                           ng-model="addRecipeForm.prepTime"
+                           placeholder="Prep Time">
+                </label>
+                <label class="item item-input">
+                    <span class="input-label">Cooking Time</span>
+                    <input type="text"
+                           ng-model="addRecipeForm.cookingTime"
+                           placeholder="Cooking Time">
+                </label>
+                <label class="item item-input">
+                    <span class="input-label">Serves how many?</span>
+                    <input type="number"
+                           ng-model="addRecipeForm.servesNMany"
+                           placeholder="Serves how many?">
+                </label>
+            </section>
+            <br />
+            <section>
+                <label class="item item-input">
+                    <span class="input-label  item-text-wrap">Describe Your Recipe</span>
+                    <input type="text"
+                           ng-model="addRecipeForm.recipeDesc"
+                           placeholder="Describe Your Recipe">
+                </label>
+            </section>
+            <br />
+            <ion-list>
+                <img ng-src="data:image/jpeg;base64,{{picture}}" height={{height}} width={{width}} alt="" />
+            </ion-list>
+            <a class="button button-stable" ng-click="addPicture()">Add a Picture</a>
+            <br />
+            <ion-list class="item-icon-right" ng-controller="addARecipeCtrl" ng-model="retVals" ng-init="ingredient()">
+                <ion-item ng-class="balanced" ng-repeat="i in retVals">
+                    <p>Name: {{i.ingName}}</p>
+                    <p>Calories : {{i.calories}} &nbsp;&nbsp;    Protein : {{i.protein}}</p>
+                    <p>Sugars : {{i.sugars}}   &nbsp;&nbsp;  Sodium : {{i.sodium}}</p>
+                    <p>Fat Content:  {{i.fatContent}} &nbsp;&nbsp; Food Color:  {{i.foodColor}} </p>
+                    <p>Freshness:  {{i.freshness}}  &nbsp;&nbsp; Quantity:  {{i.quantity}}</p>
+                    <p>Comments:  {{i.comments}}</p>
+
+                    <ion-option-button class="button-positive" ng-click="setFill(i)"><i class="icon ion-edit"></i></ion-option-button>
+                    <ion-option-button class="button-assertive" ng-click="setRemove(i)"><i class="icon ion-ios-trash"></i></ion-option-button>
+                </ion-item>
+            </ion-list>
+            <p></p>
+            <p></p>
+            <ion-list class="item-icon-right" ng-controller="addARecipeCtrl" ng-init="ingredient()">
+                <ion-item>
+                    <p>Totals for Meal</p>
+                    <p>Calories : {{totalVal.calories}} &nbsp;&nbsp;    Protein : {{totalVal.protein}}</p>
+                    <p>Sugars : {{totalVal.sugars}}   &nbsp;&nbsp;  Sodium : {{totalVal.sodium}}</p>
+                    <p>Fat Content : {{totalVal.fatContent}}</p>
+                </ion-item>
+            </ion-list>
+
+            <a href="#/page24" class="button button-stable button-block" ng-click="setNew()">Add Ingredient</a>
+            <button class="button button-balanced button-block" ng-click="trackMeal(addRecipeForm)">Submit Recipe</button>
+         </form>
+</ion-content>
+</ion-view>

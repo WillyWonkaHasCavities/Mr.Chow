@@ -1,0 +1,17 @@
+{
+  "name": "HelloIonic",
+  "private": "true",
+  "devDependencies": {
+    "ionic": "driftyco/ionic-bower#1.2.4"
+  },
+  "resolutions": {
+    "angular": "^1.4.8"
+  },
+  "dependencies": {
+    "ion-autocomplete": "~0.3.1",
+    "angular-guid": "~0.1.1",
+    "angular-nutritionix-api": "~1.0.1",
+    "angular-recursion": "~1.0.5",
+    "json-human": "*"
+  }
+}

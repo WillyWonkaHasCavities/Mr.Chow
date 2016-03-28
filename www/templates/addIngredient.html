@@ -1,0 +1,104 @@
+<ion-view title="Add Ingredient">
+  <ion-content overflow-scroll="true" padding="true" class="has-header">
+      <label class="item item-input">
+          <span class="input-label">Search</span>
+          <input ion-autocomplete type="text" class="ion-autocomplete" autocomplete="off"
+                 ng-model="model"
+                 item-value-key="item_name"
+                 item-view-value-key="item_name"
+                 items-method="getTestItems(query)"
+                 items-method-value-key="items"
+                 placeholder="Enter test query ..."
+                 items-clicked-method="itemsClicked(callback)"
+                 items-removed-method="itemsRemoved(callback)"
+                 max-selected-items="1"
+                 ng-model-options="{debounce:300}" />
+      </label>
+
+    <form class="list"
+          name="addIngredientForm"
+          ng-submit="submit(addIngredientForm)"
+          novalidate
+          class="create-form">
+
+        <div class="form-errors"
+             ng-messages="addIngredientForm.recipeName.$error"
+             ng-show="addIngredientForm.myName.$touched || addIngredientForm.$submitted"
+             ng-messages-include="templates/form-errors.html"></div>
+        <label class="item item-input item-floating-label">
+          <span class="input-label">Ingredient Name</span>
+          <input type="text"
+                 ng-model="formData.foodName"
+                 placeholder="Ingredient Name">
+        </label>
+        <label class="item item-input item-floating-label">
+          <span class="input-label">Color</span>
+          <input type="text"
+                 ng-model="addRecipeForm.recipeDesc"
+                 placeholder="Describe Your Recipe">
+        </label>
+        <label class="item item-input item-floating-label">
+          <span class="input-label">Type of Ingredient</span>
+          <input type="text"
+                 ng-model="formData.foodType"
+                 placeholder="Type of Ingredient">
+        </label>
+
+        <label class="item item-input item-floating-label">
+          <span class="input-label">Fat Content</span>
+          <input type="text"
+                 ng-model="formData.fatContent"
+                 placeholder="Fat Content">
+        </label>
+
+      <label class="item item-input item-floating-label">
+        <span class="input-label">Calories</span>
+        <input type="text"
+               ng-model="formData.calories"
+               placeholder="Calories">
+      </label>
+
+      <label class="item item-input item-floating-label">
+        <span class="input-label">Protein</span>
+        <input type="text"
+               ng-model="formData.protein"
+               placeholder="Protein">
+      </label>
+
+      <label class="item item-input item-floating-label">
+        <span class="input-label">Sugars</span>
+        <input type="text"
+               ng-model="formData.sugars"
+               placeholder="Sugars">
+      </label>
+
+      <label class="item item-input item-floating-label">
+        <span class="input-label">Sodium</span>
+        <input type="text"
+               ng-model="formData.sodium"
+               placeholder="Sodium">
+      </label>
+
+        <h4>Freshness</h4>
+        <label class="item item-input item-floating-label">
+          <span class="input-label"></span>
+          <select ng-model="formData.freshness" >
+            <option value="fresh">Fresh</option>
+            <option value="frozen">Frozen</option>
+            <option value="canned">Canned</option>
+            <option value="dried">Dried</option>
+            <option value="other">Other</option>
+          </select>
+        </label>
+
+        <label class="item item-input item-floating-label">
+          <span class="input-label  item-text-wrap">Additional Comments</span>
+          <input type="text"
+                 ng-model="formData.comments"
+                 placeholder="Additional Comments">
+        </label>
+    </form>
+    <button class="button button-balanced button-block" type="submit" ng-click="addIngredient(addIngredientForm)">Add Another Ingredient</button>
+    <button class="button button-balanced button-block" type="submit" ng-click="submit(addIngredientForm)">Submit</button>
+  </ion-content>
+</ion-view>
